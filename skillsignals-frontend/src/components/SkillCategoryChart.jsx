@@ -7,7 +7,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function SkillCategoryChart({ data }) {
+
+export default function SkillCategoryChart({ data, onSelect }) {
   return (
     <div style={{ width: "100%", height: 300 }}>
       <ResponsiveContainer>
@@ -15,7 +16,11 @@ export default function SkillCategoryChart({ data }) {
           <XAxis dataKey="category" />
           <YAxis domain={[0, 100]} />
           <Tooltip formatter={(value) => `${value}%`} />
-          <Bar dataKey="score" radius={[8, 8, 0, 0]} />
+          <Bar
+            dataKey="score"
+            radius={[8, 8, 0, 0]}
+            onClick={(data) => onSelect(data.category)}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>
